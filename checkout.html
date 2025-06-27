@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Chalore Tea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="icon" href="../assets/images/icons/tea-pet-icon.png" type="image/x-icon">
+    <script src="../assets/checkout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed">
+        <a href="../index.html" class="logo">CHALORE</a>
+        <nav>
+            <ul>
+                <li><a href="pages/white-tea.html">White Tea</a></li>
+                <li><a href="pages/green-tea.html">Green Tea</a></li>
+                <li><a href="pages/oolong.html">Oolong</a></li>
+                <li><a href="pages/black-tea.html">Black Tea</a></li>
+                <li><a href="pages/puerh.html">Puerh</a></li>
+                <li><a href="pages/matcha.html">Matcha</a></li>
+                <li><a href="pages/teaware.html">Teaware</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <div class="currency-selection">
+                <select id="currency-selector">
+                    <option value="EUR">EUR (€)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="UAH">UAH (₴)</option>
+                </select>
+            </div>
+            <span class="material-icons" onclick="openSearchModal()">search</span>
+            <!-- Pop-up modal for search -->
+            <div id="searchModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeSearchModal()">&times;</span>
+                    <input type="text" placeholder="Search..." id="searchInput" onkeyup="searchTea()">
+                    <button onclick="searchTea()">Search</button>
+
+                    <!-- Results will be shown here -->
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+            <span class="material-icons" id="login-btn">person</span>
+            <a href="/shopping-cart.html" id="cart-icon"
+                style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; position: relative;">
+                <span class="material-icons">shopping_cart</span>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout">
+        <div class="checkout-container">
+            <div class="checkout-left">
+                <h2>Contact</h2>
+                <form id="checkout-form">
+                    <a href="#" id="login-link">Log in</a>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+
+                    <h2>Delivery</h2>
+                    <input type="text" id="country" name="country" placeholder="Country / Region" required>
+
+                    <div style="display: flex; gap: 15px; width: 100%;">
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                    </div>
+
+                    <input type="text" id="address" name="address" placeholder="Address" required>
+
+                    <div style="display: flex; gap: 15px; width: 100%;">
+                        <input type="text" id="postal-code" name="postal-code" placeholder="Postal Code" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                        <input type="text" id="city" name="city" placeholder="City" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                    </div>
+
+                    <input type="text" id="phone" name="phone" placeholder="Phone number" required>
+
+                    <h2>Payment</h2>
+                    <div
+                        style="background-color: #f0f7f0; padding: 15px; border-radius: 10px; border: 1px solid #d0e8d0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+                            <span>Credit card</span>
+                            <div>
+                                <i class="fa-brands fa-cc-visa" style="margin-right: 5px;"></i>
+                                <i class="fa-brands fa-cc-mastercard" style="margin-right: 5px;"></i>
+                                <i class="fa-brands fa-cc-paypal"></i>
+                            </div>
+                        </div>
+
+                        <input type="text" id="card-number" name="card-number" placeholder="Card number" required
+                            style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 30px;">
+
+                        <div style="display: flex; gap: 15px; width: 100%;">
+                            <input type="text" id="exp-date" name="exp-date" placeholder="MM / YY" required
+                                style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                            <input type="text" id="cvv" name="cvv" placeholder="CVV" required
+                                style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                        </div>
+
+                        <input type="text" id="card-name" name="card-name" placeholder="Full name on a card" required
+                            style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ddd; border-radius: 30px;">
+                    </div>
+
+                    <button type="submit" class="pay-now-button">PAY NOW</button>
+                </form>
+            </div>
+            <div class="checkout-right">
+                <div id="order-summary">
+                    <div class="order-item">
+                        <div class="order-item-image">
+                        </div>
+                    </div>
+                </div>
+                <p>Subtotal <span id="subtotal"></span></p>
+                <p>Shipping <span id="shipping"></span></p>
+                <p>TOTAL <span id="total"></span></p>
+                <div style="font-size: 12px; color: #777; text-align: right;">Including All taxes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-column">
+                <h3>Chalore Tea</h3>
+                <p>Online tea shop in Lithuania</p>
+                <p>Free Omniva delivery</p>
+            </div>
+            <div class="footer-column">
+                <h3>INFO</h3>
+                <a href="pages/about-us.html">About us</a>
+                <a href="pages/delivery-returns.html">Delivery & Returns</a>
+                <a href="pages/contact-us.html">Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h3>READ</h3>
+                <a href="pages/sustainability.html">Sustainability</a>
+                <a href="pages/stories.html">Stories</a>
+            </div>
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dr.malyna/?hl=en" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/rostyslav.malynovskyi.1/" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Chalore Tea Shop | Lithuania, All rights reserved.</p>
+            <div class="payment-methods">
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal (Adding for functionality) -->
+    <div id="login-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="background-color: white; margin: 15% auto; padding: 20px; width: 300px; border-radius: 10px;">
+            <h3 style="margin-bottom: 15px;">Login</h3>
+            <input type="email" id="login-email" placeholder="Email"
+                style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 30px;">
+            <input type="password" id="login-password" placeholder="Password"
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 30px;">
+            <button id="login-submit"
+                style="background-color: #4CAF50; color: white; border: none; padding: 10px; width: 100%; border-radius: 30px; cursor: pointer;">Login</button>
+        </div>
+    </div>
+
+    <script src="../assets/login-checkout.js" defer></script>
+    <script src="../assets/currency.js" defer></script>
+    <script src="../assets/search.js" defer></script>
+    <script src="../assets/dynamic_counter.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Tea - Chalore Tea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="icon" href="../assets/images/icons/tea-pet-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed">
+        <a href="../index.html" class="logo">CHALORE</a>
+        <nav>
+            <ul>
+                <li><a href="white-tea.html" class="active">White Tea</a></li>
+                <li><a href="green-tea.html">Green Tea</a></li>
+                <li><a href="oolong.html">Oolong</a></li>
+                <li><a href="black-tea.html">Black Tea</a></li>
+                <li><a href="puerh.html">Puerh</a></li>
+                <li><a href="matcha.html">Matcha</a></li>
+                <li><a href="teaware.html">Teaware</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <div class="currency-selection">
+                <select id="currency-selector">
+                    <option value="EUR">EUR (€)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="UAH">UAH (₴)</option>
+                </select>
+            </div>
+            <span class="material-icons" onclick="openSearchModal()">search</span>
+            <!-- Pop-up modal for search -->
+            <div id="searchModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeSearchModal()">&times;</span>
+                    <input type="text" placeholder="Search..." id="searchInput" onkeyup="searchTea()">
+                    <button onclick="searchTea()">Search</button>
+
+                    <!-- Results will be shown here -->
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+            <span class="material-icons" id="login-btn">person</span>
+            <a href="/shopping-cart.html" id="cart-icon"
+                style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; position: relative;">
+                <span class="material-icons">shopping_cart</span>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="white-tea-page">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <span>White Tea</span>
+        </div>
+        <h1>White Tea</h1>
+
+        <div class="filter">
+            <span class="material-icons filter-icon">filter_list</span> Filter
+            <div class="filter-options hidden">
+                <label>
+                    Country of Origin:
+                    <select id="country-filter">
+                        <option value="">All</option>
+                        <!-- Countries will be dynamically added here -->
+                    </select>
+                </label>
+
+                <label>
+                    Price:
+                    <select id="price-filter">
+                        <option value="">All</option>
+                        <option value="under-10">Under €10</option>
+                        <option value="10-20">€10 - €20</option>
+                        <option value="20-plus">Over €20</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="tea-grid" id="tea-products-container">
+            <div class="loader">Loading...</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-column">
+                <h3>Chalore Tea</h3>
+                <p>Online tea shop in Lithuania</p>
+                <p>Free Omniva delivery</p>
+            </div>
+            <div class="footer-column">
+                <h3>INFO</h3>
+                <a href="about-us.html">About us</a>
+                <a href="delivery-returns.html">Delivery & Returns</a>
+                <a href="contact-us.html">Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h3>READ</h3>
+                <a href="sustainability.html">Sustainability</a>
+                <a href="stories.html">Stories</a>
+            </div>
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dr.malyna/?hl=en" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/rostyslav.malynovskyi.1/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Chalore Tea Shop | Lithuania, All rights reserved.</p>
+            <div class="payment-methods">
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="login-container">
+                <h2>Login</h2>
+                <div id="message-container" class="message-container"></div>
+                <form id="submit_login" method="post">
+                    <input type="email" id="email" placeholder="Email address" required />
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Enter your password" required />
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                </form>
+                <p id="message"></p>
+                <p class="register-link" id="register-link">
+                    Don't have the account? <a href="/registration.html">Register with your email here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/all_pages.js" defer></script>
+    <script src="../assets/currency.js" defer></script>
+    <script src="../assets/search.js" defer></script>
+    <script src="../assets/login.js" defer></script>
+    <script src="../assets/tea-loader.js" defer></script>
+    <script src="../assets/dynamic_counter.js" defer></script>
+</body>
+
+</html>

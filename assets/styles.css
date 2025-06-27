@@ -1,0 +1,1389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background: white;
+    border-bottom: 0.3px solid lightgray;
+}
+
+header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 0.3px solid lightgray;
+}
+
+/* Remove underline from logo link */
+header .logo {
+    text-decoration: none;
+    color: inherit;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons .material-icons {
+    font-size: 25px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+nav ul li a.active {
+    text-decoration: none;
+    position: relative;
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 0.2px;
+    background-color: #333;
+}
+
+.icons img {
+    width: 24px;
+    margin-left: 15px;
+}
+
+/* Style for the currency selection container */
+.currency-selection {
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+}
+
+/* Style for the currency selector dropdown */
+.currency-selection select {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect for the dropdown */
+.currency-selection select:hover {
+    border-color: #888;
+    background-color: #f1f1f1;
+}
+
+/* Add focus effect for the dropdown */
+.currency-selection select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Optional: Add a custom arrow for the dropdown */
+.currency-selection select::-ms-expand {
+    display: none;
+}
+
+.currency-selection::after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #666;
+}
+
+.hero {
+    position: relative;
+    background: url('images/tea-garden.jpeg') center/cover no-repeat;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f0eded;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.63);
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.hero button {
+    background: transparent;
+    color: white;
+    padding: 10px 20px;
+    border: 1.7px solid #dddddd;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.tea-collection {
+    background-color: white;
+    padding: 40px 10%;
+}
+
+.tea-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.tea-item {
+    position: relative;
+    width: 285px;
+    /* Adjust size as needed */
+    height: 285px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.tea-item img {
+    background-color: white !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.tea-origin {
+    margin-top: 10px;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+}
+
+.tea-name {
+    margin-top: 10px;
+    color: #333;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.tea-price {
+    margin-top: 10px;
+    color: #333;
+    font-size: 13px;
+    text-align: center;
+}
+
+.view-all {
+    margin-top: 40px;
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 30px;
+    border: 1.7px solid #dddddd;
+    color: black;
+    cursor: pointer;
+}
+
+.about-tea {
+    background: white;
+    padding: 40px 10%;
+}
+
+.about-tea h2 {
+    margin-bottom: 15px;
+}
+
+.about-tea p {
+    margin-bottom: 15px;
+}
+
+.story-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.story_home {
+    background: #eee;
+    gap: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.story_home h3 {
+    margin-bottom: 15px;
+}
+
+.story_home p {
+    margin-bottom: 15px;
+}
+
+.story-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.story_home {
+    padding: 20px;
+    border: 1px solid #ccc;
+    transition: background 0.3s;
+}
+
+.story-link:hover .story_home {
+    background: #f5f5f5;
+}
+
+.newsletter {
+    padding: 40px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter>* {
+    margin-bottom: 20px;
+}
+
+.email-container {
+    position: relative;
+    width: 330px;
+}
+
+.newsletter input {
+    padding: 10px 50px 10px 20px;
+    height: 60px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid #dddddd;
+    font-size: 16px;
+}
+
+.newsletter button {
+    position: absolute;
+    margin-top: -50px;
+    margin-right: 4px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+
+.newsletter button:hover {
+    color: #007bff;
+}
+
+.newsletter button:active {
+    transform: scale(0.9);
+    transition: transform 0.1s ease;
+}
+
+.newsletter-message {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    height: 20px;
+    width: 100%;
+}
+
+.newsletter-message.success {
+    color: #4CAF50;
+}
+
+.newsletter-message.error {
+    color: #f44336;
+}
+
+footer {
+    background: #222;
+    color: white;
+    padding: 40px 10%;
+    font-size: 14px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.footer-column p,
+.footer-column a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-column .social-icons a {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+.payment-methods i {
+    font-size: 25px;
+    margin-right: 10px;
+    color: white;
+}
+
+/* Common section styling */
+.about-us,
+.delivery-returns,
+.contact-us,
+.stories,
+.sustainability,
+.white-tea-page {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/* Reset the individual spacing that's causing differences */
+.about-us h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding-top: 0px;
+}
+
+.breadcrumb a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    color: #999;
+}
+
+.about-us p {
+    display: flex;
+    text-align: justify;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    gap: 35px;
+}
+
+.about-us p span {
+    max-width: 50%;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.about-us p img {
+    width: 590px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Delivery Returns page */
+.delivery-returns {
+    text-align: center;
+}
+
+.delivery-returns h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.delivery-returns h3 {
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.delivery-returns p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 30px;
+}
+
+.delivery-returns .price {
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 20px;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+/* Contact us page */
+
+.contact-us h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    margin-top: -70px;
+}
+
+.contact-us p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-us .email {
+    font-weight: bold;
+    ;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-us .email i {
+    margin-right: 8px;
+}
+
+/* Stories page */
+
+.hero-stories {
+    position: relative;
+    text-align: center;
+}
+
+.hero-stories img {
+    width: 100%;
+    height: 65vh;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.hero-stories h1,
+.hero-stories p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f0eded;
+}
+
+.hero-stories h1 {
+    top: 30%;
+    font-size: 36px;
+    margin-bottom: 250px;
+}
+
+.hero-stories p {
+    font-size: 18px;
+    top: 45%;
+    line-height: 1.6;
+}
+
+.story-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    gap: 70px;
+}
+
+.story {
+    flex: 1;
+    text-align: center;
+    margin-top: -20px;
+    background: none;
+}
+
+.story img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.story h3,
+.story p {
+    text-align: center;
+}
+
+.story h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.story p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* Sustainability page */
+
+.sustainability h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.sustainability p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.sustainability h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.sustainability-image img {
+    height: 60vh;
+    width: 50%;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    align-items: center;
+}
+
+/* White tea page */
+
+.filter {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 250px;
+}
+
+.filter-options.hidden {
+    display: none;
+}
+
+.filter-options label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-options select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter .material-icons {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.white-tea-page {
+    background-color: white;
+}
+
+.white-tea-page h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tea details */
+
+.tea-details {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 10%;
+    margin: auto;
+    max-width: auto;
+}
+
+.tea-details .product-header {
+    display: flex;
+    width: 100%;
+    gap: 60px;
+    padding-bottom: 30px;
+}
+
+.tea-details .product-image img {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.tea-details .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 90px;
+    text-align: left;
+}
+
+.tea-details .product-name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.tea-details .product-price {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.tea-details .product-tasting-notes {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tea-details .product-quantity {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tea-details .product-quantity button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tea-details .product-quantity button.selected {
+    background-color: #f5f5f5;
+    border-color: #bbb;
+}
+
+.tea-details .add-to-cart {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    text-transform: uppercase;
+}
+
+.tea-details .add-to-cart i {
+    font-size: 16px;
+}
+
+.tea-details .product-description {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    text-align: left;
+}
+
+.tea-details .product-description h3 {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.tea-details .product-description p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Search */
+
+/* Modal styles specifically for search */
+#searchModal.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#searchModal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#searchModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#searchModal .close:hover,
+#searchModal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Search input specific styling */
+#searchModal #searchInput {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+}
+
+#searchModal button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#searchModal button:hover {
+    background-color: #45a049;
+}
+
+/* Style for search results container */
+#searchResults {
+    margin-top: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Style for individual search results */
+#searchResults .search-result {
+    display: flex;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+}
+
+#searchResults .search-result:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles specific to search results */
+#searchResults .tea-image {
+    flex: 0 0 150px;
+    margin-right: 20px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchResults .tea-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Tea info styles specific to search results */
+#searchResults .tea-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#searchResults .tea-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#searchResults .tea-origin {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#searchResults .tea-description {
+    color: #555;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+#searchResults .tea-price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* For smaller screens */
+@media (max-width: 600px) {
+    #searchResults .tea-image {
+        flex: 0 0 100px;
+        height: 100px;
+    }
+
+    #searchModal .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Login */
+
+/* Styles for modal window login */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    max-width: 500px;
+    width: 90%;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* Styles for login form */
+.login-container {
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-family: 'Sora', sans-serif;
+}
+
+.password-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* .forgot-link {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+} */
+
+.login-button,
+.logout-button {
+    width: 50%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0px;
+}
+
+.login-button:hover,
+.logout-button:hover {
+    background-color: #45a049;
+}
+
+.logout-button {
+    background-color: #f44336;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Style for the message container */
+.message-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Style for successful login message */
+.message-container.success {
+    color: green;
+    font-weight: bold;
+}
+
+/* Style for failed login message */
+.message-container.error {
+    color: red;
+    font-weight: bold;
+}
+
+
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Registration */
+
+.registration-page {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.registration-page h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.registration-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-page input[type="email"],
+.registration-page input[type="text"],
+.registration-page input[type="password"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.registration-page .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.registration-page .terms input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.registration-page button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.registration-page button:hover {
+    background-color: #45a049;
+}
+
+/* Shopping cart */
+
+.cart-count {
+    background-color: #c6e7de;
+    color: #004D40;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-weight: bold;
+}
+
+#cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.shopping-cart {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.shopping-cart h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.shopping-cart table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.shopping-cart table th,
+.shopping-cart table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.shopping-cart table th {
+    background-color: #f5f5f5;
+}
+
+.shopping-cart .cart-summary {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.shopping-cart .checkout-button {
+    padding: 10px 16px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.shopping-cart .checkout-button:hover {
+    background-color: #45a049;
+}
+
+/* Checkout Page */
+.checkout {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.checkout-left {
+    width: 50%;
+}
+
+.checkout-right {
+    width: 35%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+.checkout-left h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.checkout-left h2:first-child {
+    margin-top: 0;
+}
+
+.checkout-left form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-left form input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+#login-link {
+    text-align: right;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.pay-now-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+    width: 200px;
+}
+
+.pay-now-button:hover {
+    background-color: #45a049;
+}
+
+.checkout-right h2 {
+    margin-bottom: 20px;
+}
+
+#order-summary {
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item-image {
+    width: 70px;
+    height: auto;
+    border: gray 1px solid;
+    border-radius: 10px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.order-item-quantity {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #000;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.order-item-details {
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+.order-item-name {
+    font-weight: bold;
+}
+
+.order-item-price {
+    font-weight: bold;
+}
+
+.checkout-right p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.checkout-right p:last-of-type {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+#shipping {
+    color: #4CAF50;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column-reverse;
+    }
+
+    .checkout-left,
+    .checkout-right {
+        width: 100%;
+    }
+
+    .checkout-right {
+        margin-bottom: 30px;
+    }
+}

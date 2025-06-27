@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Chalore Tea Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/images/icons/tea-pet-icon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed">
+        <a href="index.html" class="logo">CHALORE</a>
+        <nav>
+            <ul>
+                <li><a href="pages/white-tea.html">White Tea</a></li>
+                <li><a href="pages/green-tea.html">Green Tea</a></li>
+                <li><a href="pages/oolong.html">Oolong</a></li>
+                <li><a href="pages/black-tea.html">Black Tea</a></li>
+                <li><a href="pages/puerh.html">Puerh</a></li>
+                <li><a href="pages/matcha.html">Matcha</a></li>
+                <li><a href="pages/teaware.html">Teaware</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <span class="material-icons" onclick="openSearchModal()">search</span>
+            <!-- Pop-up modal for search -->
+            <div id="searchModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeSearchModal()">&times;</span>
+                    <input type="text" placeholder="Search..." id="searchInput" onkeyup="searchTea()">
+                    <button onclick="searchTea()">Search</button>
+
+                    <!-- Results will be shown here -->
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+            <a href="registration.html"
+                style="color: inherit; text-decoration: none; font-size: inherit; display: inline-flex; align-items: center;">
+                <span class="material-icons">person</span>
+            </a>
+            <a href="/shopping-cart.html" id="cart-icon"
+                style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; position: relative;">
+                <span class="material-icons">shopping_cart</span>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="registration-page">
+        <h1>New user registration</h1>
+        <form id="registerForm" method="POST" action="/register">
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat password" required>
+            <div class="terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I declare that I agree with terms and conditions</label>
+            </div>
+            <button type="submit">Register</button>
+            <p id="message"></p> <!-- Display success/error messages -->
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-column">
+                <h3>Chalore Tea</h3>
+                <p>Online tea shop & pop-up tea tastings in Lithuania</p>
+                <p>Free Omniva delivery</p>
+            </div>
+            <div class="footer-column">
+                <h3>INFO</h3>
+                <a href="pages/about-us.html">About us</a>
+                <a href="pages/delivery-returns.html">Delivery & Returns</a>
+                <a href="pages/contact-us.html">Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h3>READ</h3>
+                <a href="pages/sustainability.html">Sustainability</a>
+                <a href="pages/stories.html">Stories</a>
+            </div>
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dr.malyna/?hl=en" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/rostyslav.malynovskyi.1/" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Chalore Tea Shop | Lithuania, All rights reserved.</p>
+            <div class="payment-methods">
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to the JavaScript files -->
+    <script src="../assets/all_pages.js" defer></script>
+    <script src="../assets/search.js" defer></script>
+    <script src="../assets/register.js" defer></script>
+    <script src="../assets/dynamic_counter.js" defer></script>
+</body>
+
+</html>
